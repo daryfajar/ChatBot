@@ -1,0 +1,96 @@
+<!-- # Disusun Oleh :
+# Iyondiansyah Eka Cahyo 21.83.0687
+# Dary Fajar Ayyasy 21.83.0753 -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chatbot</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css')}}"/>
+	</head>
+	
+	<body>
+		<div class="container-fluid ">
+			<div class="row justify-content-center">		
+				<div class="user_info">
+					<span>Optimasi Layanan Pelanggan</span>
+					<p>Pengembangan Chatbot Cerdas untuk Otomatisasi Interaksi dan Pelayanan</p>
+				</div>
+			</div>
+        </div>
+
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">		
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://play-lh.googleusercontent.com/mSM5-q4fGwa_M69ia5oIecWvZg3Eh5Xhs4TXcKL4UdxBKNh9cNnnGWNteCvdVSV1nRw" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Pelayanan</span>
+									<p>Ask me anything fo me!</p>
+								</div>
+							</div>
+						</div>
+						<div id="messageFormeight" class="card-body msg_card_body">
+							
+							
+						</div>
+						<div class="card-footer">
+							<form id="messageArea" class="input-group">
+                                <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
+								<div class="input-group-append">
+									<button type="submit" id="send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+<!-- # Disusun Oleh :
+# Iyondiansyah Eka Cahyo 21.83.0687
+# Dary Fajar Ayyasy 21.83.0753 -->
+
+		<script>
+			$(document).ready(function() {
+				$("#messageArea").on("submit", function(event) {
+					const date = new Date();
+					const hour = date.getHours();
+					const minute = date.getMinutes();
+					const str_time = hour+":"+minute;
+					var rawText = $("#text").val();
+
+					var userHtml = '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + rawText + '<span class="msg_time_send">'+ str_time + '</span></div><div class="img_cont_msg"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoGBxETExYTERMRERYWFhkRERERERYQEBYRFhMYGRYWFhYaHysiGhwoHRYWIzQjKCwwMTExGSE3PDcwOyswMS4BCwsLDw4PHBERGTAfHyEwMC4wMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIuMDAwMC4wMDAwMDAwMDAwMDAwMP/AABEIAQMAwgMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAwQBAgUGBwj/xAA9EAACAQIDBAYIBAYCAwEAAAAAAQIDEQQhMRJBUXEFBiJhgZETIzJCobHB8AdS0eEzYnKiwvEUgkOSshX/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAQIDBAUGB//EADQRAAIBAgQDBgUCBwEAAAAAAAABAgMRBCExQQUSUXGBkaGxwSIyYdHwQuEGFBYzNFLxE//aAAwDAQACEQMRAD8A8gADiH1MAAAAAAAAAAGXkrtxUeMnsIAwCOriqaV3O/LtP4kFTpKFuwpSfup5pd5lVCo9Is0anEsJTupVVdbJ39C5svg/IwcKtObd5Xv5WLuE6QlpN7X9Wv8A7GaWDklk7nOpfxDQlK04OK66+Kya7rnQAjJNbSu1x3LuYNRpp2Z3YyjJKUXdPRgAAsAAAAAAAAAAAAAAAAAAAAAACHHVdmOtr5R5FoxcpKK3MVarGjTlUlolcjxWPhHJdp/2r9SlXqJ5zk29y3fepWck3+hZwmHnN2S2vDgdanRhSWWvX80PB4zH1sXL4n8O0Vp+7+r7rGsVFptqfc7LZT5LQinS2c1n972zr0eh6zeUXd99kWK3VOs1e8eNr5mRzj1NNU5bI5OHxO01tJKPFRvbk7fMiqNJ8d+bV/M6EeiK7yUG7cclZcSricO4RUZtpp3T3rimOZXtcryySvYxRxtsk7fR7uaLuCxiqZNbM1quP9JyppvspJ97yd/EjhtRa2XdrNNafuYq1GNRfXqdDh/EamEms7w3j7ro/Xc9CDTD1tuKktN8d0X70fvcbnJaadme8hONSKnF3TzXYAAQXAAAAAAAAAAAAAAAAAABR6X0XJl4qdJxvs7+08vIz4b+7H82Obxj/Cqdi9Uc+hh9ppce/PXge06v9FbMVJ8LW7jkdW8Dt1U3oe6w9JJK2436stjxlCFldmMLhL7i4sJbcS4axcy4GFIzt2OcsJHPJZ6lHFdAUp+3FSXevqd6MFwDkiGhc8VV6kULuzqRX5VJW5aXPPdZur//AB2nHOD0ut+/Q+qSoo4XWro70tGS3xzW8tGo1LNlJ0ouLsj5t0RU7Uoce2vC+18GjolHCUHCq7/laReNfFK1TtPU8Dm5YNJ7Nr39wADWOwAAAAAAAAAAAAAAAAAACKuk3Bc352JSPFJpRlZ5S/tl9xM+HaVVXOdxaEp4Ooo/R9yab8j03V7B7Pa0usuNjuRmorNpd7OX0c+xHl9CTEYZSXrJWT0TdvgtTZ1eZ5O1lkeg6PoqWaaOnTwp4b/8mcVtUMROPdLaivM7fQmPrx7Fd3a0lx4E5Ipm9j0Dwr4FaeHvvLeIxL9HfuPIYuWKnJ7M/Rq7d77OvINoK56CS2dWvHiQYxKSkuKa+BzcF0U//LiHVlqrzWT7t7LlSM1lLPvX1KSSW5eOeqPn3TGF9HWS47T/ALWVzqdZs8R/TTs+cv8ARyzXry5pLsPUcGp8mGv1k36L2AAMJ1QAAAAAAAAAAAAAAAAADMNVzR7ah0PSdN05qMoOEXt+8nNap70eIPc9UMdCrScKlrxilzgr5/H4Gai87HG41CTpxqL9LfnbPyt3mnV/DXpxT1SS8Ua4zAWrwlVi6lNZSgm14viu4t9DyUZShFpqMmk07q18mjtulF65m1fO55qXQ8n1W6DjRq1Z1pOpDZcaSpuUajk3lKW1LZXJJ+V79SvRcYRbumnZXtmt2h2nQgtEvI5nS0s0r+BM5NrMrCKi8joTrJ0oLzOZ0hg4yk41HUjFxag42SU3F2k+0nk7MvbHqo5lqnTUoJuzytxKxdmS1lY8d1e6ClTp15YiW1OSUKCpVasmpL33tu3hZ3u77j0WAw01RSqZySszqYXC090YrvsRdItRQnJyIglHJHmZ9CU57dSd5Sm5RV84x2I8N7/U8XiIpSaWiyXK59BxmIVHDuc3Z3k4x4uSat8UfOpPN8zVrbHpODc7U5Nuysl0307LoAAxHcAAAAAAAAAAAAAAAAAABb6Lx0qU1JaaNfNFQDTQrOEZxcZK6Z7HDVbVFKLTU4qat3/6O9QxDPB9BVtmpbyPYUKmVzdjPnVzx2Mw38vV5L33T+n5l3HXVS5xOlalNT26tSFOKkoLbko7U3nZX3lx41JZlGrKEn2oqadm4ySlG60dnvLmqsjtYmpRVHalVjCKXtTajFc2zfoyonDsyjNe1GcXeMovRpooKnQUHGUVUVk1ColKC36PgybA10l2bLgkkku5LcQ1mRsdGdTZWRyukKsptQWsnnb8urLVStdHketPSkqckqcnGVndxdnZ5W+ZSUkldmbD0JV6ipx1ZS609J7clShlCm2rXdr6SefK3mcMy23m8zBqN3dz2dCjGjTVOOi/L94ABBlAAAAAAAAAAAAAAAAAAAAAN6NRxaffdHsOj8UpQTW9acHwPI4XDzqTjCCblJrsrVybskekhg5Uk43UnFuM9n2W087G1hr59Pf8ucHjnJaH+2fh9r28yfHNtLZ/VFbDembsqivwbcPLcWsJNMv0sFN5xs/L6m18uR59W1IKMsTbOVNfme1FN+KV2Yp1Kt7OUZfzJWa+CuW4YOtHVRs9ckjE+zfQXJbWxnFYxQg5SdlFZs8Hj8S6k5SfHTgtyPYYzo+dZeji0pSdobWm1bJPna3ieKqQcW00007NNWaa1TRp4jKy2O/wSMLTl+rTu/d38DUAGud4AAAAAAAAAAAAAAAAAAAAAAv9GdCYiu7UqblxlayXNvTzPUYD8N5yzq1Yx7oJzfm8vK5lp0KlT5Y39DTxGPw2Hdqk0n01fgrv2KP4Z4L0mKU2v4ack912kl8ZX8CxhlJTqQq3241Jxmnk7qTzPYdXer9LCTcaW09qzk5W92+SslZZss9Zuryrr01KyrJWa0VSK3P+bg/Dl044eVOiovXU8hjsfDEYp1I/LZJXy0+nbc8BXi6crxzT3cf3L2E6SXFp8LMq4t+7JOLWTi8mmu4kwlCWTizFfLMpYvf8+X8z8CXC0nPtSyS0RoqcrXkTekUIXbskVb6EWIKkpOrShBXlOpGEUte0834K78DgfiNgXSx1WyspP0sf+2cvjc911G6OdScsXUVkr08On5Tqc9y8S91k6sYfFyvVU1NRtGcHmrO9raPXei86EqlLlWupmwOPhhcS5Svy2s7dtz4oD3uM/C+or+hrQlwjUTg7c1fPyPJdKdB4ihK1Sm452T2W4vk1qc+pRnT+ZWPXUMfh8Q7Uppvpo/B2ZzwGgYzbAAAAAAAAAAASABtCLbsk5N5JLN3PS9XupFfEWnUtRg87yVpSXct/N28T6H0D1Ww+G9iF56OpNXqPk/d5KxtUsJUqZv4V9ft/w5GM41h8PeK+OXRaLtenhd9Uj510R1GxVazkvRRf512rd0P9HtehuoOHpWc16WX5qnaXhFZee0eupwSIq1VRudCnhqUdFd/XPy08jzGJ4xiq+XNyrpHLxer8SKlg4RSSWS0W5clovAzKmldmI1JNLdvfBIxJt5LfrJ/Q2le5yyNpbd+Ct9+ZapTIpwSt8TNi2qION1w6sLERdaikqyWcdFUS/wAu88XgKkotxknFp2cXk096sfUqNSxxutXVtV06tG0ayXJVEvdffwZqVaXQ2aNblyloeTxGJSV5PLgV+jsNUxleNKN1HWTXuwWr5/qcyrRqOWzPaUk9nYa7W1e2zbjc+m9Tug1hqN5L1s7SqPhwj4GGnTuzPVqciy1OzRoxpwjCC2YxSjFLcloQSl2rk85FaqjciaBmVTvz5EccLFpqVp3zaauvJmsU2SJ6F9AcrpPqpgq2UqEIv81OKpu//XXxPL9Jfhhe7w9a3CNWN/7or/E9/KozbbyME8PTlrH2N6hxLFUMoVHbo81538rHwvpfoPEYaVqsJx/LO21F96aykc8+94iNOrFwqQjOLycJJST8GeS6xfhzSmnPCtwlr6OT2oPuUnnF87rkaFXAyjnB39fsz0WD/iClUtGuuV9V8v3Xn220+YglxOHlTk4TTTTcZRas01qmRGiehTuAACQlwPovUXqXa2IxMVf2qVJrJcJSXHgiP8NOq1Ocf+XVtNptUoP2bp3cpLnpyb4HvZM6WDwqfxz7l7nleM8Xabw9HLaT9Uvd9yN1HLIzGpZ2No6FWUu1c6Wp5YtuRTqO7LFV5MrwjdkxBM1aPM0UjavLcYpLIbATd8hCVzSEu0ZpLVPdewWQLCsYxGKUctZPRd3F8ERektktXpf5soTovad3tN5uT1YjBN5g3qdHU51FWlCMqq9mdrWbTSbW/u4EuG6UcWoVdNFUtlf+b9S+tlf6KuLwyabSs7BcryaBdbIa+45+ExTppRnfZ0jLW3BPu+RerSvYrytMk1uLmEaTZKIN73zMqZiK++8jqZAGE/WLh9S7CRRou7uWqbEgeS/ELqmsQniKCvViu3FazS4fzr4rwPlbVtT9BUXdN+J8h/EXAeixk3FJRqJVopKyzT28uaZy8bRUfjXees4Bj5Tvhp52V4+6+3h2ebABzz059t6s4VU8HQh7L2Iy8Z9v5yZepy2rrehSpqMIxWkUorklZESnaVz0kI2il0PmFWbqVJTe7b8WW0Vb3l4l611dFCmvWeNyY7mMs12a0FlfiK/A2bsiNgQ1Jaku4gWb8SWu7RJfQEMGT7GWXG5DRiTU57gwRypb1rv7yOs7uLW/JloqTXat3kxd2C3QlZW4Oy5GardiSnSW77srkeIKXTYIFBNK67zaKt+m4yZLXARrVRkyQCOjM3rrIgl2ZFh5ol9QQYfUsSyWWryRDSWZJVqJW47kHqCaOUUvM8H+LmBvTo1lubovlJOUf8z29PTPXecjrtgfTYKtFaxj6SO/+H2n/apLxNfEw5qcl3m/wyt/44unN6Xs+/L38T4yDDyBwbo+i8rPv89EVav1LdT2SpiFk/M9RE+VlyErJMgTW1tbiShJbKuU9pqbh4rkRFagurN38jStI3paEGIlmQtQZw6zM4p6Izh1qRVZXkTuCShobTQorI2ZAEJEbh6xefkNGbrOUXzXwY0BZIMRqTsr4jUqgYAMFgZMkZuAQ4tZXJKE7o1reyRYeRNsgTpZkGGe1Uk3pFuK8GWLmmHhs7XfKUvi2L2BKnmZsmrNXTVmu56kNCV22TRZDQPj/SHV6rCrUgk2ozlBO2qjJq/wB9j9HHgvJA538hDqei/qLEdBbslSZbpaFSrGzZ0onnSXDxvC33c51KpJ1LSto7PedDBS1XBlSpBKrlwv5krVoHQjoVb5tlib7JWjoQgTU8oldPNk1WXZSIYr52JSBagsjLCMXKg0qIU3nHn/AIs3aI6eU0u+/wAGAW2yLEaolaIq5VAiCBhFgbsIwk3obKLBNzSpoV6epamsitFZlksiCdGmKqWi+/JeL/Y3iiliql524fQhLMFvCrL4Eknma0F2UazlmNwWrg1uClgZgzTFR3m6MvNE6MFPDytPmRYrKsu9ZeT/AEJKsdl8vkMfG/o5r3ZWf9M1b52+Jfe4Ja0uyRLQVZZGregQM1ZZmaS08yG+pYoLMlgsGkjYwygMKRE5etj96kjRUlU7afBr5looHUaIq+4nZBX3GNAiYiJGEXBHg8dGVadFKW1CnGpKWWxacpJJZ3v2X5ouvU5+D6PUa9SupSbqQhBwaWythvNO1877+Bck2VBK2YTI5SYjIWyBM0cSq71Z242+Cv8AU7CkcuFP1s/6m/MtDUF6Gi5EEn2ia+T5FVy7QQLwNLgAlkZiyNzG0QDOIp3RA59hrh9Cxt8StiGs/iTEEblkaTZpCeS+9MgmZCTZFqgVo6luksisiCS5gw2YuVBs0UJRtK3eXWyrVfrIri18y0dQdNsirbiS5DXehjBozBi5gkE1DebyRHh9SQgEcmIiaMIkEqKco9uXh8kW0yrL234fJBAli8rlSms+WXlkT1pWiuf1NJRtN9+fmi0SScGAQDecDUmmiJkIgNlHFSLM2UcUy8SRhpXi1wfzRJErYJ5yXFX8n+5ZiWBvT18l9+RdRUw6+f7fQuFZEGjZi5lmpUGxDGHrY/e5m1iOjF+lTffblYlA6LRBiNxvNvv7ssvEir6rkVQNDKQCAJKGvh+hIQ0nn8CYhoGs0RkzNWiUBBlb35+H/wAosorSXal4fJBAixUvZXcyWss4vuRVxEvWW4JL4F2suzF/eiLdCQDW4BJcmV6gBVFSCRUrgGRElPDP16W7ZeXh+xfQBILOH0RYZkFGQaMiZkEAMzS9tcn9ACSS2Q1tQCCCMwAQDDLaAANTDAACIfel4fJGANwc+t/FfP6HSn/DXh8mZBZ7EsjABBJ//9k=" class="rounded-circle user_img_msg"></div></div>';
+					
+					$("#text").val("");
+					$("#messageFormeight").append(userHtml);
+
+					$.ajax({
+						data: {
+							msg: rawText,
+						},
+						type: "POST",
+						url: "/get",	
+					}).done(function(data) {
+						var botHtml = '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://play-lh.googleusercontent.com/mSM5-q4fGwa_M69ia5oIecWvZg3Eh5Xhs4TXcKL4UdxBKNh9cNnnGWNteCvdVSV1nRw" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + data + '<span class="msg_time">' + str_time + '</span></div></div>';
+						$("#messageFormeight").append($.parseHTML(botHtml));
+					});
+					event.preventDefault();
+				});
+			});
+		</script>
+
+    </body>
+</html>
